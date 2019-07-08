@@ -1,36 +1,49 @@
-<!DOCTYPE html>
-<html>
+import React, { Component } from 'react';
+import './index.scss'
 
-<head>
-    <title>Web Worker</title>
-    <link rel="stylesheet" href="./index.css">
-</head>
-
-<body>
-    <section class="login-section flex justify-center align-center">
-        <div class="login-form-wrapper flex column justify-center align-center">
-            <img src="" alt="logo" />
-            <form>
-                <div class="form-group">
-                    <label for="username">Username or Email Address</label>
-                    <input type="text" id="username" class="form-control"/>
+export default class Dropdown extends Component {
+    state = {
+        show: false
+    }
+    showStyle = {
+        position: "relative",
+        transform: "translate3d(0, 0, 0)",
+        top: "unset",
+        left: "unset",
+        display: "block"
+    }
+    toggleDropdown = () => {
+        this.setState({
+            show: !this.state.show
+        })
+    }
+    hideDropdownMenuOnOutsideClick = () => {
+        if(this.state.show) {
+            this.setState({
+                show: !this.state.show
+            })
+        }
+    }
+    // componentDidMount() {
+    //     document.addEventListener("click", this.hideDropdownMenuOnOutsideClick);
+    // }
+    // componentWillUnmount() {
+    //     document.removeEventListener("click", this.hideDropdownMenuOnOutsideClick)
+    // }
+    render() {
+        return (
+            <div className="dropdown-wrapper">
+            <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" onClick={this.toggleDropdown} type="button"   aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <div className={"dropdown-menu"} style={this.state.show ? this.showStyle: {}} >
+                    <a className="dropdown-item" href="#">Action</a>
+                    <a className="dropdown-item" href="#">Another action</a>
+                    <a className="dropdown-item" href="#">Something else here</a>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control"/>
-                </div>
-                <div class="flex justify-space-between">
-                    <div class="form-group">
-                        <label for="remeberPassword">
-                            <input type="checkbox" name="remeberPassword" id="remeberPassword" />
-                            Remember me
-                        </label>
-                    </div>
-                    <button type="submit" class="btn primary">Login</button>
-                </div>
-            </form>
-        </div>
-    </section>
-</body>
-
-</html>
+            </div>
+            </div>
+        )
+    }
+}
