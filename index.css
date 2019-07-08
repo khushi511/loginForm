@@ -1,100 +1,21 @@
-*{
-    box-sizing: border-box;
-    font-family: arial;
-	font-size: 18px;
-}
-html {
-    background-color: #c0c0c0 ;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    border: none;
-}
-
-/* color codes used in website 
-only for quick reference.
-Donot use variables for color code,
-as its not supported by IE
-*/
-:root {
-    --main-bg-color: #c0c0c0;
-    --default-btn-color: #b0b0b0;
-    --primary-color: #458ee1;
-    --dark-grey: #616161;
-} 
-/* global component css */
-.flex {
-    display: flex;
-}
-.column {
-    flex-direction: column;
-}
-.justify-center {
-    justify-content: center;
-}
-
-.align-center {
-    align-items: center;
-}
-
-.justify-space-between {
-    justify-content: space-between;
-}
-
-.btn {
-    background-color: #b0b0b0;
-    padding: 5px 10px;
-    border: transparent;
-    border-radius: 4px;
-    color: #616161;
-    font-size: 14px;
-}
-
-.btn:hover {
-    background-color: #616161;
-    color: #b0b0b0;
-}
-
-.btn.primary {
-    background-color: #458ee1;
-    color: white;
-}
-
-/* form css */
-.form-group {
+.dropdown-wrapper {
     display: block;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
 
-.form-group label {
-    display: block;
-    font-size: 14px;
-    color: #616161;
-    line-height: 1.6;
+    .btn {
+        width: 100%;
+    }
 }
-
-.form-group .form-control {
-    width: 100%;
-    padding: 5px 10px;
-    margin-top: 5px;
-    border: 1px solid #b0b0b0;
-    border-radius: 4px;
-}
-
-/* page specific css */
-.login-section {
-    min-height: 100vh;
-    height: 100%;
-}
-
-.login-form-wrapper form {
+.dropdown {
+    display: inline-block;
+    position: relative;
+    border: 1px solid black;
     background-color: white;
-    box-shadow: 0 0 2px #c0c0c0;
-    border: 1px solid #b0b0b0;
-    width: 300px;
-    border-radius: 2px;
-    padding: 20px;
+    color: black;
+}
+
+.dropdown-menu {
+    position: relative;
+    float: none;
+    clear: both;
+    width: inherit;
 }
