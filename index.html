@@ -3,7 +3,8 @@ import './index.scss'
 
 export default class Dropdown extends Component {
     state = {
-        show: false
+        show: false,
+        value: ''
     }
     showStyle = {
         position: "relative",
@@ -24,6 +25,18 @@ export default class Dropdown extends Component {
             })
         }
     }
+
+    onSelect = (e) => {
+        debugger;
+        if(e.target.nodeName == "LI") {
+            let idVal = e.target.attributes["data-value"].nodeValue;
+            let value = idVal != "-1" ? e.target.innerText : "";
+            this.setState({
+                value,
+                show: !this.state.show
+            })
+        }
+    }
     // componentDidMount() {
     //     document.addEventListener("click", this.hideDropdownMenuOnOutsideClick);
     // }
@@ -33,15 +46,19 @@ export default class Dropdown extends Component {
     render() {
         return (
             <div className="dropdown-wrapper">
-            <div className="dropdown">
+            <div className={`dropdown ${this.state.value ? "uplift-label": ""}`}>
+                <div className="label-wrapper">
                 <button className="btn btn-secondary dropdown-toggle" onClick={this.toggleDropdown} type="button"   aria-haspopup="true" aria-expanded="false">
-                    Dropdown button
+                   {this.state.value}
+                   <label>Test label</label>
                 </button>
-                <div className={"dropdown-menu"} style={this.state.show ? this.showStyle: {}} >
-                    <a className="dropdown-item" href="#">Action</a>
-                    <a className="dropdown-item" href="#">Another action</a>
-                    <a className="dropdown-item" href="#">Something else here</a>
                 </div>
+                <ul className={"dropdown-menu"} onClick={this.onSelect} style={this.state.show ? this.showStyle: {}} >
+                    <li className="dropdown-item" data-value="-1">none</li>
+                    <li className="dropdown-item" data-value="1">Action</li>
+                    <li className="dropdown-item" data-value="2">Another action</li>
+                    <li className="dropdown-item" data-value="3">Something else here</li>
+                </ul>
             </div>
             </div>
         )
