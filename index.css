@@ -1,21 +1,57 @@
 .dropdown-wrapper {
     display: block;
 
-    .btn {
+    .btn,
+    .btn-secondary:not(:disabled):not(.disabled).active, 
+.btn-secondary:not(:disabled):not(.disabled):active, 
+.show>.btn-secondary.dropdown-toggle {
         width: 100%;
+        background-color: white;
+        color: black;
+        text-align: left;
+        min-width: 200px;
+
+        &:hover, &.active {
+            background-color: white;
+            color: black;
+        }
     }
 }
+
 .dropdown {
     display: inline-block;
     position: relative;
     border: 1px solid black;
     background-color: white;
     color: black;
+    .label-wrapper {
+        position: relative;
+    }
+    label {
+        // position: absolute;
+        // top: 50%;
+        // left: 0;
+        // transform: translate(0, -50%);
+        transition: all linear 0.5s;
+    }
+    &.uplift-label {
+        label {
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            background-color: white;
+            padding-left: 4px;
+            padding-right: 4px;
+            font-size: 12px;
+            transition: all linear 0.5s;
+        }
+    }
 }
 
 .dropdown-menu {
     position: relative;
     float: none;
     clear: both;
+    width: 100%;
     width: inherit;
 }
