@@ -9,7 +9,7 @@ export default class Dropdown extends Component {
     showStyle = {
         position: "relative",
         transform: "translate3d(0, 0, 0)",
-        top: "unset",
+        top: "-16px",
         left: "unset",
         display: "block"
     }
@@ -19,7 +19,7 @@ export default class Dropdown extends Component {
         })
     }
     hideDropdownMenuOnOutsideClick = () => {
-        if(this.state.show) {
+        if (this.state.show) {
             this.setState({
                 show: !this.state.show
             })
@@ -28,7 +28,7 @@ export default class Dropdown extends Component {
 
     onSelect = (e) => {
         debugger;
-        if(e.target.nodeName == "LI") {
+        if (e.target.nodeName == "LI") {
             let idVal = e.target.attributes["data-value"].nodeValue;
             let value = idVal != "-1" ? e.target.innerText : "";
             this.setState({
@@ -46,20 +46,18 @@ export default class Dropdown extends Component {
     render() {
         return (
             <div className="dropdown-wrapper">
-            <div className={`dropdown ${this.state.value ? "uplift-label": ""}`}>
-                <div className="label-wrapper">
-                <button className="btn btn-secondary dropdown-toggle" onClick={this.toggleDropdown} type="button"   aria-haspopup="true" aria-expanded="false">
-                   {this.state.value}
-                   <label>Test label</label>
-                </button>
+                <label className={this.state.value ? "shrink":"expand"}>Test label</label>
+                <div className={"dropdown"}>
+                    <button className="btn" onClick={this.toggleDropdown} type="button" aria-haspopup="true" aria-expanded="false">
+                        {this.state.value}
+                    </button>
+                    <ul className={"dropdown-menu"} onClick={this.onSelect} style={this.state.show ? this.showStyle : {}} >
+                        <li className="dropdown-item" data-value="-1">none</li>
+                        <li className="dropdown-item" data-value="1">Action</li>
+                        <li className="dropdown-item" data-value="2">Another action</li>
+                        <li className="dropdown-item" data-value="3">Something else here</li>
+                    </ul>
                 </div>
-                <ul className={"dropdown-menu"} onClick={this.onSelect} style={this.state.show ? this.showStyle: {}} >
-                    <li className="dropdown-item" data-value="-1">none</li>
-                    <li className="dropdown-item" data-value="1">Action</li>
-                    <li className="dropdown-item" data-value="2">Another action</li>
-                    <li className="dropdown-item" data-value="3">Something else here</li>
-                </ul>
-            </div>
             </div>
         )
     }
