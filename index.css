@@ -1,5 +1,6 @@
 .dropdown-wrapper {
     display: block;
+    position: relative;
 
     .btn,
     .btn-secondary:not(:disabled):not(.disabled).active, 
@@ -10,14 +11,20 @@
         color: black;
         text-align: left;
         min-width: 200px;
+        height: 40px;
 
         &:hover, &.active {
             background-color: white;
             color: black;
         }
+        &:focus {
+            box-shadow: none;
+        }
     }
 }
+// .dropdown-toggle::after {
 
+// }
 .dropdown {
     display: inline-block;
     position: relative;
@@ -52,6 +59,32 @@
     position: relative;
     float: none;
     clear: both;
-    width: 100%;
+    border: 0;
     width: inherit;
 }
+
+label {
+    font-size: 1rem;
+    font-weight: 400;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+
+}
+.shrink {
+    padding: 0px 4px;
+   transform: translate(10px, -8px) scale(0.75);
+   transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+.expand {
+    transform: translate(10px, 8px) scale(1);
+    background-color: white;
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+ }
+
+ .dropdown-item {
+     padding-left: 10px;
+     padding-right: 10px;
+ }
